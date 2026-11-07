@@ -99,7 +99,7 @@ def listar_tramites(usuario=Depends(obtener_usuario_actual)):
     "/api/v1/tramites/{tramite_id}",
     response_model=Tramite,
     tags=["Trámites"],
-    responses={404: {"description": "Trámite no encontrado"}},
+    responses={400: {"description": "Trámite no encontrado"}},
 )
 def consultar_tramite(tramite_id: int, usuario=Depends(obtener_usuario_actual)):
     """Consulta el estado de un trámite clínico del paciente autenticado."""
