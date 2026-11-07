@@ -107,7 +107,7 @@ def consultar_tramite(tramite_id: int, usuario=Depends(obtener_usuario_actual)):
     # Si el trámite no existe o pertenece a otro paciente se responde 404,
     # para no revelar información clínica de terceros (mitigación BOLA / IDOR).
     if tramite is None or tramite["propietario"] != usuario["usuario"]:
-        raise HTTPException(status_code=404, detail="Trámite no encontrado")
+        raise HTTPException(status_code=400, detail="Trámite no encontrado")
     return tramite
 
 
